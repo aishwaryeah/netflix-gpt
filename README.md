@@ -18,6 +18,8 @@
    - Create a slice
    - Add the slice reducer into the store
    - Provide the store in App.js
+- Update profile api call
+- Fetch movies from tmdb
 
 #Features
 - Login/Sign Up
