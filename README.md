@@ -20,6 +20,17 @@
    - Provide the store in App.js
 - Update profile api call
 - Fetch movies from tmdb
+- BugFix: If user is not logged in, redirect /browse to Login page and vice-versa
+- Usubscribe to the onAuthStateChanged callback
+- Register TMDB API and get data from TMDB Now Playing movies list API
+- Custom Hook for Now Playing Movies
+- Create movieSlice
+- Update Store with movies data
+- Planning for MainContainer & Secondary Container
+- Fetch data for trailer video
+- Update store with Trailer video data
+- Embeded the Youtube video and make it autoplay with mute
+- Tailwind classes to make the Main Container look good
 
 #Features
 - Login/Sign Up

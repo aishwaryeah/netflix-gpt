@@ -3,9 +3,9 @@ import Header from './Header'
 import { checkValidData } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BACKGROUND_IMG } from '../utils/constants';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -14,7 +14,6 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
@@ -24,7 +23,6 @@ const Login = () => {
   const handleSignInBtnClick = () => {
     // Validate the form data 
     const message = checkValidData(email.current.value, password.current.value);
-    console.log(email.current.value + password.current.value)
     setErrorMessage(message);
     if(message) return;
 
@@ -39,7 +37,6 @@ const Login = () => {
           }).then(() => {
             const {uid, email, displayName} = auth.currentUser;
             dispatch(addUser({uid: uid, email: email, displayName: displayName}));
-            navigate('/browse');
           }).catch((error) => {
             const errorMessage = error.message;
             setErrorMessage(errorMessage);
@@ -55,7 +52,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          navigate('/browse');
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -68,7 +64,7 @@ const Login = () => {
         <Header/>
         <div className='absolute'>
             <img 
-                src='https://assets.nflxext.com/ffe/siteui/vlv3/8200f588-2e93-4c95-8eab-ebba17821657/web/IN-en-20250616-TRIFECTA-perspective_9cbc87b2-d9bb-4fa8-9f8f-a4fe8fc72545_large.jpg'
+                src={BACKGROUND_IMG}
                 alt='background-image'/>
         </div>
         <form 
