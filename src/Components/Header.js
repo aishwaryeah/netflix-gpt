@@ -38,6 +38,7 @@ const Header = () => {
   const handleGptSearchClick = () => {
     //Toggle GPT Search
     dispatch(toggleGptSearchView());
+    
   }
 
   const handleLanguageChange = (e) => {
